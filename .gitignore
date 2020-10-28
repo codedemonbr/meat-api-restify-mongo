@@ -1,0 +1,6 @@
+# Excluir pasta node_modules
+node_modules
+# excluir yarn.lock
+yarn.lock
+# excluir pasta dist
+dist
