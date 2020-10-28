@@ -5,6 +5,7 @@
 </h1>
 
 ## 💻 How to run
+
 ---
 
 First of all certify that you have Node.js LTS version installed.
@@ -14,8 +15,13 @@ First of all certify that you have Node.js LTS version installed.
 3. Test API routes using [Insomnia][insomnia] or [Postman][postman] or [Chromium][chromium] Browser
 
 ## 🛣 Routes
+
 ---
+
 ### [GET]
+
+-   base_url/users => users list;
+-   base_url/users/:id => user;
 
 ### [POST]
 
@@ -23,8 +29,24 @@ First of all certify that you have Node.js LTS version installed.
 
 ### [DELETE]
 
-## 🚀 Technologies
+## 🗄️ How to access MongoDB database
+
 ---
+
+You will need to have MongoDB installed. Start mongod:
+
+```
+ mongod --dbpath=../path/to/mongoData/db
+```
+
+Certainly you need to know where is your mongo data path to replace.
+
+[Repository](#) with a test database.
+
+## 🚀 Technologies
+
+---
+
 This project was developed live [Thiago Santos][linkedin] with the following technologies:
 
 -   [Node.js](https://nodejs.org/en/)
@@ -34,7 +56,9 @@ This project was developed live [Thiago Santos][linkedin] with the following tec
 -   [VS Code][vscode] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
 ## 📝 License
+
 ---
+
 This project is under the MIT license. See the [LICENSE][mit license] for more information.
 
 ---
