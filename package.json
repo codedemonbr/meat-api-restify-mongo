@@ -10,13 +10,11 @@
   },
   "dependencies": {
     "nodemon": "^2.0.6",
-    "restify": "^8.5.1"
+    "restify": "^8.5.1",
+    "mongoose": "4.13.9"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.7.36",
+    "@types/mongoose": "4.7.32",
     "@types/restify": "^8.4.2"
-  },
-  "peerDependencies": {
-    "mongoose": "^5.10.11"
   }
 }
