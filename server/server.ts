@@ -21,7 +21,9 @@ export class Server {
                     version: '1.0.0',
                 });
 
+                // plugins ativos para lidar com json e realizar query
                 this.application.use(restify.plugins.queryParser());
+                this.application.use(restify.plugins.bodyParser());
 
                 //Routes here
                 for (let router of routers) {
