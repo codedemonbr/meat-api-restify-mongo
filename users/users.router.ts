@@ -80,6 +80,22 @@ class UsersRouter extends Router {
                 }
             );
         });
+        /**
+         * Rota de delete. Extremamente simples. Apagar o recurso informado na url
+         */
+        application.del('/users/:id', (req, res, next) => {
+            // Assemelha-se ao metodo update.
+            User.remove({ _id: req.params.id })
+                .exec()
+                .then((cmdResult: any) => {
+                    if (cmdResult.result.n) {
+                        res.send(204);
+                    } else {
+                        res.send(404);
+                    }
+                    return next();
+                });
+        });
     }
 }
 
