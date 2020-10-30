@@ -9,12 +9,11 @@
     "runDev": "nodemon dist/main.js"
   },
   "dependencies": {
-    "nodemon": "^2.0.6",
-    "restify": "^8.5.1",
+    "restify": "^6.3.4",
     "mongoose": "4.13.9"
   },
   "devDependencies": {
     "@types/mongoose": "4.7.32",
-    "@types/restify": "^8.4.2"
+    "@types/restify": "^5.0.6"
   }
 }

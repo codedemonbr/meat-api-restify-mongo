@@ -3,30 +3,25 @@ import * as restify from 'restify';
 import { User } from './users.model';
 
 class UsersRouter extends Router {
+    constructor() {
+        super();
+        this.on('beforeRender', (document) => {
+            document.password = undefined;
+        });
+    }
     applyRoutes(application: restify.Server) {
         /**
          * All users are listed through this route
          */
         application.get('/users', (req, res, next) => {
-            User.find().then((users) => {
-                res.json(users);
-                return next();
-            });
+            User.find().then(this.render(res, next));
         });
 
         /**
          * An specific user is obtained from the database
          */
         application.get('/users/:id', (req, res, next) => {
-            User.findById(req.params.id).then((user) => {
-                if (user) {
-                    res.json(user);
-                    return next();
-                }
-
-                res.send(404);
-                return next();
-            });
+            User.findById(req.params.id).then(this.render(res, next));
         });
 
         /**
@@ -34,11 +29,7 @@ class UsersRouter extends Router {
          */
         application.post('/users', (req, res, next) => {
             let user = new User(req.body);
-            user.save().then((user) => {
-                user.password = undefined;
-                res.json(user);
-                return next();
-            });
+            user.save().then(this.render(res, next));
         });
 
         /**
@@ -56,10 +47,7 @@ class UsersRouter extends Router {
                         res.send(404);
                     }
                 })
-                .then((user) => {
-                    res.json(user);
-                    return next();
-                });
+                .then(this.render(res, next));
         });
 
         /**
@@ -70,16 +58,10 @@ class UsersRouter extends Router {
         application.patch('/users/:id', (req, res, next) => {
             const options = { new: true };
             User.findByIdAndUpdate(req.params.id, req.body, options).then(
-                (user) => {
-                    if (user) {
-                        res.json(user);
-                        return next();
-                    }
-                    res.send(404);
-                    return next();
-                }
+                this.render(res, next)
             );
         });
+
         /**
          * Rota de delete. Extremamente simples. Apagar o recurso informado na url
          */
