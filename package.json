@@ -9,10 +9,12 @@
     "runDev": "nodemon dist/main.js"
   },
   "dependencies": {
+    "mongoose": "4.13.9",
     "restify": "^6.3.4",
-    "mongoose": "4.13.9"
+    "restify-errors": "5.0.0"
   },
   "devDependencies": {
+    "@types/restify-errors": "4.3.2",
     "@types/mongoose": "4.7.32",
     "@types/restify": "^5.0.6"
   }
