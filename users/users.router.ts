@@ -40,7 +40,7 @@ class UsersRouter extends Router {
          * Update an user overwriting the user completely
          */
         application.put('/users/:id', (req, res, next) => {
-            const options = { overwrite: true };
+            const options = { runValidators: true, overwrite: true };
 
             User.update({ _id: req.params.id }, req.body, options)
                 .exec()
@@ -61,7 +61,7 @@ class UsersRouter extends Router {
          * É necessario tratar o header
          */
         application.patch('/users/:id', (req, res, next) => {
-            const options = { new: true };
+            const options = { runValidators: true, new: true };
             User.findByIdAndUpdate(req.params.id, req.body, options)
                 .then(this.render(res, next))
                 .catch(next);
