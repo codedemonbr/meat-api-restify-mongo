@@ -32,6 +32,7 @@ class UsersRouter extends Router {
          */
         application.post('/users', (req, res, next) => {
             let user = new User(req.body);
+            //Aqui é chamado o metodo save, então a validação ocorrerá somente aqui
             user.save().then(this.render(res, next)).catch(next);
         });
 
