@@ -1,6 +1,7 @@
 import { Router } from '../common/router';
 import * as restify from 'restify';
 import { User } from './users.model';
+import { NotFoundError } from 'restify-errors';
 
 class UsersRouter extends Router {
     constructor() {
@@ -14,14 +15,16 @@ class UsersRouter extends Router {
          * All users are listed through this route
          */
         application.get('/users', (req, res, next) => {
-            User.find().then(this.render(res, next));
+            User.find().then(this.render(res, next)).catch(next);
         });
 
         /**
          * An specific user is obtained from the database
          */
         application.get('/users/:id', (req, res, next) => {
-            User.findById(req.params.id).then(this.render(res, next));
+            User.findById(req.params.id)
+                .then(this.render(res, next))
+                .catch(next);
         });
 
         /**
@@ -29,14 +32,15 @@ class UsersRouter extends Router {
          */
         application.post('/users', (req, res, next) => {
             let user = new User(req.body);
-            user.save().then(this.render(res, next));
+            //Aqui é chamado o metodo save, então a validação ocorrerá somente aqui
+            user.save().then(this.render(res, next)).catch(next);
         });
 
         /**
          * Update an user overwriting the user completely
          */
         application.put('/users/:id', (req, res, next) => {
-            const options = { overwrite: true };
+            const options = { runValidators: true, overwrite: true };
 
             User.update({ _id: req.params.id }, req.body, options)
                 .exec()
@@ -44,10 +48,11 @@ class UsersRouter extends Router {
                     if (result.n) {
                         return User.findById(req.params.id);
                     } else {
-                        res.send(404);
+                        throw new NotFoundError('Documento não encontrado');
                     }
                 })
-                .then(this.render(res, next));
+                .then(this.render(res, next))
+                .catch(next);
         });
 
         /**
@@ -56,10 +61,10 @@ class UsersRouter extends Router {
          * É necessario tratar o header
          */
         application.patch('/users/:id', (req, res, next) => {
-            const options = { new: true };
-            User.findByIdAndUpdate(req.params.id, req.body, options).then(
-                this.render(res, next)
-            );
+            const options = { runValidators: true, new: true };
+            User.findByIdAndUpdate(req.params.id, req.body, options)
+                .then(this.render(res, next))
+                .catch(next);
         });
 
         /**
@@ -73,10 +78,11 @@ class UsersRouter extends Router {
                     if (cmdResult.result.n) {
                         res.send(204);
                     } else {
-                        res.send(404);
+                        throw new NotFoundError('Documento não encontrado');
                     }
                     return next();
-                });
+                })
+                .catch(next);
         });
     }
 }
