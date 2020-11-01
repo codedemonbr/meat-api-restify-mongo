@@ -9,19 +9,26 @@ export interface User extends mongoose.Document {
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        // required: true
+        required: true,
+        maxlength: 80,
+        minlength: 3,
     },
     email: {
         type: String,
         unique: true,
-        // required: true
+        match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        required: true,
     },
     password: {
         type: String,
         select: false,
-        // required: true
-        // spoiler: as validações required entram no proximo commit
+        required: true,
         // select é uma opção para não mostrar password
+    },
+    gender: {
+        type: String,
+        required: false,
+        enum: ['Male', 'Female'],
     },
 });
 
