@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-import { Restaurant } from '../restaurants/restaurants.model';
 import { User } from '../users/users.model';
+import { Restaurant } from '../restaurants/restaurants.model';
 
 export interface Review extends mongoose.Document {
     date: Date;
@@ -36,4 +36,4 @@ const reviewSchema = new mongoose.Schema({
     },
 });
 
-const Review = mongoose.model<Review>('Review', reviewSchema);
+export const Review = mongoose.model<Review>('Review', reviewSchema);
