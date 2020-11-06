@@ -29,7 +29,7 @@ const restSchema = new mongoose.Schema({
     menu: {
         type: [menuSchema],
         required: false,
-        select: false,
+        select: false, //mudando para false não mostra
         default: [],
     },
 });
