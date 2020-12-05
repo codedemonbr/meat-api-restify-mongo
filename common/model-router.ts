@@ -25,7 +25,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
     }
 
     envelopeAll(documents: any[], options: any = {}): any {
-        const resource = {
+        const resource: any = {
             _links: {
                 self: `${options.url}`,
             },
@@ -49,7 +49,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
 
     validateId = (req, res, next) => {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-            next(new NotFoundError('Document is not found'));
+            next(new NotFoundError('Document not found'));
         } else {
             next();
         }
