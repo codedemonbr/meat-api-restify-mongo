@@ -78,7 +78,6 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
                         })
                     )
             )
-
             .catch(next);
     };
 
@@ -95,7 +94,10 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
     };
 
     replace = (req, res, next) => {
-        const options = { runValidators: true, overwrite: true };
+        const options = {
+            runValidators: true,
+            overwrite: true,
+        };
 
         this.model
             .update({ _id: req.params.id }, req.body, options)
@@ -104,7 +106,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
                 if (result.n) {
                     return this.model.findById(req.params.id);
                 } else {
-                    throw new NotFoundError('Documento não encontrado');
+                    throw new NotFoundError('Document not found');
                 }
             })
             .then(this.render(res, next))
@@ -112,7 +114,10 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
     };
 
     update = (req, res, next) => {
-        const options = { runValidators: true, new: true };
+        const options = {
+            runValidators: true,
+            new: true,
+        };
         this.model
             .findByIdAndUpdate(req.params.id, req.body, options)
             .then(this.render(res, next))
@@ -128,7 +133,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
                 if (cmdResult.result.n) {
                     res.send(204);
                 } else {
-                    throw new NotFoundError('Documento não encontrado');
+                    throw new NotFoundError('Document not found');
                 }
                 return next();
             })
