@@ -19,9 +19,9 @@ export abstract class Router extends EventEmitter {
                 this.emit('beforeRender', document);
                 response.json(this.envelope(document));
             } else {
-                throw new NotFoundError('Document not found');
+                throw new NotFoundError('Document not found - render trouble');
             }
-            return next();
+            return next(false);
         };
     }
 
@@ -40,7 +40,7 @@ export abstract class Router extends EventEmitter {
             } else {
                 response.json(this.envelopeAll([]));
             }
-            return next();
+            return next(false);
         };
     }
 }
