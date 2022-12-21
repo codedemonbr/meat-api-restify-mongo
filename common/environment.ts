@@ -9,5 +9,6 @@ export const environment = {
   },
   security: {
     saltRounds: process.env.SALT_ROUNDS || 10,
+    apiSecret: process.env.API_SECRET || "meat-api-secret",
   },
 };
