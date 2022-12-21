@@ -1,16 +1,16 @@
-import { Router } from './common/router';
-import * as restify from 'restify';
+import * as restify from "restify";
+import { Router } from "./common/router";
 
 class MainRouter extends Router {
-    applyRoutes(application: restify.Server) {
-        application.get('/', (req, res, next) => {
-            res.json({
-                user: '/users',
-                reviews: '/reviews',
-                restaurants: '/restaurants',
-            });
-        });
-    }
+  applyRoutes(application: restify.Server) {
+    application.get("/", (req, resp, next) => {
+      resp.json({
+        users: "/users",
+        restaurants: "/restaurants",
+        reviews: "/reviews",
+      });
+    });
+  }
 }
 
 export const mainRouter = new MainRouter();

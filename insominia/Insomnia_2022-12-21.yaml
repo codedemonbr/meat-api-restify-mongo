@@ -1,0 +1,399 @@
+_type: export
+__export_format: 4
+__export_date: 2022-12-21T13:05:01.314Z
+__export_source: insomnia.desktop.app:v2022.6.0
+resources:
+  - _id: req_c7d75fe701874f3ba1d8a13c8e861aa5
+    parentId: fld_e9e9380f74d246548bfdef84d6f038eb
+    modified: 1671625757656
+    created: 1671625609434
+    url: "{{ _.baseURL }}/restaurants"
+    name: restaurants
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1671625609434
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_e9e9380f74d246548bfdef84d6f038eb
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1671625604923
+    created: 1671625604923
+    name: Restaurants
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1671625604923
+    _type: request_group
+  - _id: wrk_c9b6a61417704b1fb314efefdad9d07f
+    parentId: null
+    modified: 1671627449072
+    created: 1670621881014
+    name: New Document
+    description: |-
+      # Meat API 
+
+      Is an API developed in my course on udemy
+    scope: design
+    _type: workspace
+  - _id: req_2ce15baa0bde4fe383839159721e7099
+    parentId: fld_e9e9380f74d246548bfdef84d6f038eb
+    modified: 1671626943503
+    created: 1671625743152
+    url: "{{ _.baseURL }}/restaurants"
+    name: restaurants
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "name": "Heath Foods",
+              "menu": [{ "name": "green salad", "price": 4 }]
+            }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671556785935
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_47a94e5488a64bcbb65dc694d2ed612d
+    parentId: fld_e9e9380f74d246548bfdef84d6f038eb
+    modified: 1671626180478
+    created: 1671625969151
+    url: "{{ _.baseURL }}/restaurants/63a2fc4b52061b3c5fb4af3c/menu"
+    name: restaurants menu
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "name": "Burger House",
+              "menu": [{ "name": "Coke", "price": 5 }]
+            }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671522374185.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a51c0bf164e24e2a8a1652990ec15ebd
+    parentId: fld_e9e9380f74d246548bfdef84d6f038eb
+    modified: 1671626176435
+    created: 1671626024407
+    url: "{{ _.baseURL }}/restaurants/63a2fc4b52061b3c5fb4af3c/menu"
+    name: restaurants menu
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: " [
+
+        \t\ 
+
+        \t { \"name\": \"French Fries\", \"price\": 8 },
+
+        \t { \"name\": \"Hamburguer\", \"price\": 9 }
+
+        \\ 
+
+        \ ]
+
+        \    "
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671505168310.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cac52c4fa09647299b2d0690aaade7df
+    parentId: fld_e9e9380f74d246548bfdef84d6f038eb
+    modified: 1671626980647
+    created: 1671626959403
+    url: "{{ _.baseURL }}/restaurants/63a2fe3f52061b3c5fb4af43"
+    name: delete restaurants
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1671505168260.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0e266a83765c4d3f9615028653651083
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671488102239
+    created: 1671487962436
+    url: "{{ _.baseURL }}/users"
+    name: Users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1671487962436
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_64119354ae2045fab1c3bd4ae5a6231a
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1671487945937
+    created: 1671487945937
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1671487945937
+    _type: request_group
+  - _id: req_403e0590473949b1a0223b3df53feacd
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671579638400
+    created: 1671579616687
+    url: "{{ _.baseURL }}/users/63a247bf52061b3c5fb4af37"
+    name: Users by id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1671487962411
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_076fef7283eb4b969fb5d4fc76b0f501
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671624723257
+    created: 1671624690044
+    url: "{{ _.baseURL }}/users/63a2f3a552061b3c5fb4af38"
+    name: Users delete by id
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1671487962404.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_63dbf83eb39b421eaa3f0fd6203bfeae
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671624200371
+    created: 1671623512537
+    url: "{{ _.baseURL }}/users/?email=codedemonbr@gmail.com"
+    name: Users find by email
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671487962398.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cfc77fefd40a491b9ae1d2f4ed677605
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671624929744
+    created: 1671488115343
+    url: "{{ _.baseURL }}/users"
+    name: Users
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Thiago Henrique dos Santos",
+        	"email": "codedemonbr@gmail.com",
+        	"password": "123456",
+        	"cpf": "03689536537"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671487962386
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d945b385efbd416f8efb3574599319bc
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671625140329
+    created: 1671625018951
+    url: "{{ _.baseURL }}/users/63a247bf52061b3c5fb4af37"
+    name: Users patch
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Thiago Henrique dos Santos",
+        	"email": "codedemonbr@gmail.com",
+        	"password": "12345678"	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671487962361
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a76a96cbeea8419b9e7a0478920990b4
+    parentId: fld_64119354ae2045fab1c3bd4ae5a6231a
+    modified: 1671625516166
+    created: 1671579456772
+    url: "{{ _.baseURL }}/users/63a2fab552061b3c5fb4af3b"
+    name: Users
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "name": "usuario 8",
+              "email": "user9@gmail.com",
+              "password": "123456",
+              "cpf": "613.586.318-59"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1671487962336
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_b91f3abe4f37cd538d2b9d573890a385a73f3ebc
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1671487877083
+    created: 1670621881041
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1670621881041
+    _type: environment
+  - _id: jar_b91f3abe4f37cd538d2b9d573890a385a73f3ebc
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1670621881044
+    created: 1670621881044
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_4b2aca10085c4e3391f0c69e19ff7f6f
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1671627403158
+    created: 1670621881033
+    fileName: MeatDocument
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_59404ad5efad45129ffdc351a68399ee
+    parentId: wrk_c9b6a61417704b1fb314efefdad9d07f
+    modified: 1670621881052
+    created: 1670621881052
+    name: Example Test Suite
+    _type: unit_test_suite
+  - _id: env_70df2598111f462f8feba75ed9bdf9c4
+    parentId: env_b91f3abe4f37cd538d2b9d573890a385a73f3ebc
+    modified: 1671627330803
+    created: 1671487884482
+    name: MeatAPI
+    data:
+      baseURL: localhost:3333
+    dataPropertyOrder:
+      "&":
+        - baseURL
+    color: "#ff0000"
+    isPrivate: false
+    metaSortKey: 1671487884482
+    _type: environment

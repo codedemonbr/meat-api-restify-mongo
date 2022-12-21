@@ -1,33 +1,33 @@
 import * as jestCli from "jest-cli";
 
-import { Server } from "./server/server";
 import { environment } from "./common/environment";
-import { usersRouter } from "./users/users.router";
-import { reviewsRouter } from "./reviews/reviews.router";
-import { restaurantsRouter } from "./restaurants/restaurants.router";
-import { User } from "./users/users.model";
-import { Review } from "./reviews/reviews.model";
 import { Restaurant } from "./restaurants/restaurants.model";
+import { restaurantsRouter } from "./restaurants/restaurants.router";
+import { Review } from "./reviews/reviews.model";
+import { reviewsRouter } from "./reviews/reviews.router";
+import { Server } from "./server/server";
+import { User } from "./users/users.model";
+import { usersRouter } from "./users/users.router";
 
 let server: Server;
 const beforeAllTests = () => {
-    environment.db.url =
-        process.env.DB_URL ||
-        "mongodb://meatTestUser:123456@172.18.0.2:27017/meat-api-test-db";
-    environment.server.port = process.env.SERVER_PORT || 3001;
-    server = new Server();
-    return server
-        .bootstrap([usersRouter, reviewsRouter, restaurantsRouter])
-        .then(() => User.remove({}).exec())
-        .then(() => Review.remove({}).exec())
-        .then(() => Restaurant.remove({}).exec());
+  environment.db.url =
+    process.env.DB_URL ||
+    "mongodb://codedemonbr:123abc@localhost:27017/meat-api-test-db";
+  environment.server.port = process.env.SERVER_PORT || 3001;
+  server = new Server();
+  return server
+    .bootstrap([usersRouter, reviewsRouter, restaurantsRouter])
+    .then(() => User.remove({}).exec())
+    .then(() => Review.remove({}).exec())
+    .then(() => Restaurant.remove({}).exec());
 };
 
 const afterAllTests = () => {
-    return server.shutdown();
+  return server.shutdown();
 };
 
 beforeAllTests()
-    .then(() => jestCli.run())
-    .then(() => afterAllTests())
-    .catch(console.error);
+  .then(() => jestCli.run())
+  .then(() => afterAllTests())
+  .catch(console.error);
