@@ -12,7 +12,7 @@ export const tokenParser: restify.RequestHandler = (req, resp, next) => {
   }
 };
 
-const extractToken = (req: restify.Request) => {
+function extractToken(req: restify.Request) {
   //Authorization: Bearer TOKEN
   let token = undefined;
   const authorization = req.header("authorization");
@@ -23,7 +23,7 @@ const extractToken = (req: restify.Request) => {
     }
   }
   return token;
-};
+}
 
 function applyBearer(req: restify.Request, next): (error, decoded) => void {
   return (error, decoded) => {
