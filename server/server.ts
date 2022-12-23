@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import * as mongoose from "mongoose";
 import * as restify from "restify";
 
@@ -24,6 +25,8 @@ export class Server {
         this.application = restify.createServer({
           name: "meat-api",
           version: "1.0.0",
+          certificate: fs.readFileSync("./security/keys/cert.pem"),
+          key: fs.readFileSync("./security/keys/key.pem"),
         });
 
         // plugins ativos para lidar com json e realizar query
