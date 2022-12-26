@@ -1,8 +1,10 @@
 import * as fs from "fs";
+
 import * as mongoose from "mongoose";
 import * as restify from "restify";
 
 import { environment } from "../common/environment";
+import { logger } from "../common/logger";
 import { Router } from "../common/router";
 import { handleError } from "./error.handler";
 import { mergePatchBodyParser } from "./merge-patch.parser";
@@ -22,12 +24,26 @@ export class Server {
   initRoutes(routers: Router[]): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
-        this.application = restify.createServer({
+        const options: restify.ServerOptions = {
           name: "meat-api",
           version: "1.0.0",
-          certificate: fs.readFileSync("./security/keys/cert.pem"),
-          key: fs.readFileSync("./security/keys/key.pem"),
-        });
+          log: logger,
+        };
+
+        if (environment.security.enableHTTPS) {
+          (options.certificate = fs.readFileSync(
+            environment.security.certificate
+          )),
+            (options.key = fs.readFileSync(environment.security.key));
+        }
+
+        this.application = restify.createServer(options);
+
+        this.application.pre(
+          restify.plugins.requestLogger({
+            log: logger,
+          })
+        );
 
         // plugins ativos para lidar com json e realizar query
         this.application.use(restify.plugins.queryParser());
@@ -45,6 +61,20 @@ export class Server {
         });
 
         this.application.on("restifyError", handleError);
+        /**
+         * Evitar usar audit log ele expoe tudo da request
+         * isso pode ser considerado uma falha de segurança.
+         * Implementar o proprio log é melhor adequado.
+         */
+        // this.application.on(
+        //   "after",
+        //   restify.plugins.auditLogger({
+        //     log: logger,
+        //     event: "after",
+        //   })
+        // );
+
+        // this.application.on("audit", (data) => {});
       } catch (error) {
         reject(error);
       }
